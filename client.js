@@ -13,7 +13,17 @@ client.on("messageCreate", msg => {
         msg.channel.send("Bonjour toi!")
             .then(message => {console.log(`Sent message : ${message.content}`)})
             .catch(console.error);
-    } 
+    } else if (msg.content.charAt(0)==";") {
+        command = msg.content.split(" ")
+        switch(command[1]) {
+            case "test" : msg.channel.send("Piou piou");
+            case "time" : sendMessage(msg.channel);
+        }
+    }
 });
+
+function sendMessage(channel){
+    channel.send(new Date().getTime());
+}
 
 client.login(token);

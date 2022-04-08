@@ -1,7 +1,7 @@
 {
   "name": "pierre-bot",
   "version": "1.0.0",
-  "description": "",
+  "description": "General purpose bot, used in the BES discord server.",
   "main": "client.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,5 +11,13 @@
   "license": "ISC",
   "dependencies": {
     "discord.js": "^13.6.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Oedipsos/pierre-bot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Oedipsos/pierre-bot/issues"
+  },
+  "homepage": "https://github.com/Oedipsos/pierre-bot#readme"
 }
