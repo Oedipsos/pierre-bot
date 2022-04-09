@@ -13,17 +13,25 @@ client.on("messageCreate", msg => {
         msg.channel.send("Bonjour toi!")
             .then(message => {console.log(`Sent message : ${message.content}`)})
             .catch(console.error);
-    } else if (msg.content.charAt(0)==";") {
-        command = msg.content.split(" ")
-        switch(command[1]) {
-            case "test" : msg.channel.send("Piou piou");
-            case "time" : sendMessage(msg.channel);
+    } else if (msg.content.charAt(0) == prefix) {
+        [_, command, ...args] = msg.content.split(/\s+/)
+        switch(command) {
+            case "test":
+		msg.channel.send("Piou piou");
+		break;
+            case "time":
+		msg.channel.send(getDate());
+		break;
+	    default:
+		console.log("Command not recognised");
         }
+    } else {
+	console.log(`Invalid command call, please use ${prefix}`);
     }
 });
 
-function sendMessage(channel){
-    channel.send(new Date().getTime());
+function getDate() {
+    return Date();
 }
 
 client.login(token);
