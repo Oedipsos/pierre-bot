@@ -9,24 +9,27 @@ client.once("ready", () => {
 
 client.on("messageCreate", msg => {
     console.log("Got message");
-    if (msg.content == "Bonjour Pierre!") {
-        msg.channel.send("Bonjour toi!")
-            .then(message => {console.log(`Sent message : ${message.content}`)})
-            .catch(console.error);
-    } else if (msg.content.charAt(0) == prefix) {
+    if (msg.content.charAt(0) == prefix) {
         [_, command, ...args] = msg.content.split(/\s+/)
         switch(command) {
             case "test":
-		msg.channel.send("Piou piou");
-		break;
+		        msg.channel.send("Piou piou");
+		        break;
             case "time":
-		msg.channel.send(getDate());
-		break;
-	    default:
-		console.log("Command not recognised");
+		        msg.channel.send(getDate());
+		        break;
+            case "react":
+                msg.react('😄');
+                break;
+            case "reaction_listener":
+                msg.channel
+                   .send("What do you want?")
+                   .then(message => message.react('🅰'));
+                break;
+	        default:
+		       console.log("Command not recognised");
+               msg.channel.send("I don't know this command");
         }
-    } else {
-	console.log(`Invalid command call, please use ${prefix}`);
     }
 });
 
